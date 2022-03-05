@@ -19,14 +19,13 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Container(
-              margin: const EdgeInsets.all(40.0),
-              child: Column(children: const [
-                Text(
-                  'You audio is playing now.\n You can minimize this app but not force close.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 20),
-                ),
-              ])),
+            margin: const EdgeInsets.all(40.0),
+            child: const Text(
+              'You audio is playing now.\n You can minimize this app but not force close.',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
         ),
       ),
     );
