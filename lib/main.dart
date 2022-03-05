@@ -14,6 +14,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final assetsAudioPlayer = AssetsAudioPlayer();
+  bool playing = true;
   // AudioPlayer audioPlayer = AudioPlayer();
 
   // final AudioCache audioCache = AudioCache(
@@ -30,6 +31,7 @@ class _MyAppState extends State<MyApp> {
       Audio("assets/ambient_decay.mp3"),
       showNotification: true,
     );
+    playing = true;
     //WidgetsBinding.instance?.addPostFrameCallback((_) {});
   }
 
@@ -42,13 +44,30 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Welcome'),
         ),
         body: Center(
-          child: Container(
-            margin: const EdgeInsets.all(40.0),
-            child: const Text(
-              'You audio is playing now.\n You can minimize this app but not force close.',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20),
-            ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              IconButton(
+                icon: playing
+                    ? const Icon(Icons.pause)
+                    : const Icon(Icons.play_arrow),
+                tooltip: 'Play/Pause',
+                onPressed: () {
+                  assetsAudioPlayer.playOrPause();
+                  setState(() {
+                    playing = !playing;
+                  });
+                },
+              ),
+              Container(
+                margin: const EdgeInsets.all(40.0),
+                child: const Text(
+                  'You audio is playing now.\n You can minimize this app but not force close.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+            ],
           ),
         ),
       ),
