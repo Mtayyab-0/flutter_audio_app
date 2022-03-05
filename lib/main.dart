@@ -1,6 +1,6 @@
+import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:just_audio_background/just_audio_background.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,13 +19,14 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Container(
-            margin: const EdgeInsets.all(40.0),
-            child: const Text(
-              'You audio is playing now.\n You can minimize this app but not force close.',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20),
-            ),
-          ),
+              margin: const EdgeInsets.all(40.0),
+              child: Column(children: const [
+                Text(
+                  'You audio is playing now.\n You can minimize this app but not force close.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20),
+                ),
+              ])),
         ),
       ),
     );
