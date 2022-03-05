@@ -1,13 +1,37 @@
-import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
-import 'package:just_audio/just_audio.dart';
+import 'package:assets_audio_player/assets_audio_player.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final assetsAudioPlayer = AssetsAudioPlayer();
+  // AudioPlayer audioPlayer = AudioPlayer();
+
+  // final AudioCache audioCache = AudioCache(
+  //     prefix: "assets/",
+  //     fixedPlayer: AudioPlayer(
+  //       mode: PlayerMode.LOW_LATENCY,
+  //     )..setReleaseMode(ReleaseMode.STOP))
+  //   ..load('shutup.mp3');
+  @override
+  void initState() {
+    super.initState();
+
+    assetsAudioPlayer.open(
+      Audio("assets/ambient_decay.mp3"),
+      showNotification: true,
+    );
+    //WidgetsBinding.instance?.addPostFrameCallback((_) {});
+  }
 
   @override
   Widget build(BuildContext context) {
